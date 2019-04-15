@@ -288,12 +288,12 @@ div {
     </style>
 </head>
 <body>
-   { % if username == 'admin' % }
    <div>
        <a href="#" class="button tel orange big"> 测试环境更新v1.3 </a>
        <a href="#" class="button tel orange bigrounded">当前用户：{{ username }}</a>
        <a href="/logout.html" class="button blue medium">注销系统</a>
    </div>
+{ % if username == 'admin' % }
 	 <div>
 	<a href="/fabitest.html" class="button pink">法币管理台测试环境更新</a>
 	<a href="/fabipre.html" class="button pink bigrounded">法币管理台预发布环境更新</a>
@@ -313,12 +313,11 @@ div {
        <a href="/bjbstatictest.html" class="button blue">卢克索下载页面测试环境更新</a>
        <a href="/bjbstaticpre.html" class="button blue bigrounded">卢克索下载页面预发布环境更新</a>
 </div>
-{ % endif % }
-{ % if username == 'chiyi' % }
+{ % else % }
 <div>
 	<a href="/littleantstest.html" class="button pink">小蚂蚁下载页面测试环境更新</a>
 	<a href="/littleantspre.html" class="button pink bigrounded">小蚂蚁下载页面预发布环境更新</a>
     </div>
-{ % endif% }
+{ % endif % }
 </body>
 </html>
