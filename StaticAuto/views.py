@@ -16,7 +16,8 @@ password = '123.com'
 # Create your views here.
 @login_required(login_url='/login.html')
 def indexView(request):
-    return render(request, 'index.html')
+    username = request.user.username
+    return render(request, 'index.html', locals())
 
 
 # 用户登录
