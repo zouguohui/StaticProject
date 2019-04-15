@@ -14,4 +14,6 @@ urlpatterns = [
     path('bjbstatictest.html', views.BjbstaticTestView, name='bjbstatictest'),
     path('bjbstaticpre.html', views.BjbstaticPreView, name='bjbstaticpre'),
     path('sharerdev.html', views.SharerDevView, name='sharerdev'),
+    path('littleantstest.html', views.LittleAntsTestView, name='littleantstest'),
+    path('littleantspre.html', views.LittleAntsPreView, name='littleantspre'),
 ]
