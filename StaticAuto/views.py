@@ -218,7 +218,46 @@ def BjbstaticPreView(request):
             msg = e
         return render(request, 'bjbstaticpre.html', locals())
 
-
+# 小蚂蚁下载页面测试环境更新
+@login_required(login_url='/login.html')
+def LittleAntsTestView(request):
+        msg = "更新成功！"
+        try:
+            ssh.connect(hostname='172.16.255.202', port=port, username=username, password=password)
+            cmd = "cd /usr/local/releases/sharer/sharersStatic/ && git pull"
+            log = "cd /usr/local/releases/sharer/sharersStatic/ && git log -1"
+            cmd_chown = "chown -R apache:apache /usr/local/releases/sharer/sharersStatic/"
+            ssh.exec_command(cmd)
+            time.sleep(1)
+            ssh.exec_command(cmd_chown)
+            stdin, stdout, stderr = ssh.exec_command(log)
+            result = stdout.read().decode()
+            print(result)
+        except Exception as e:
+            msg = e
+        return render(request, 'littleantstest.html', locals())
+    
+ 
+# 小蚂蚁下载页面预发布环境更新
+@login_required(login_url='/login.html')
+def LittleAntsPreView(request):
+        msg = "更新成功！"
+        try:
+            ssh.connect(hostname='172.16.255.206', port=port, username=username, password=password)
+            cmd = "cd /usr/local/releases/sharer/sharersStatic/ && git pull"
+            log = "cd /usr/local/releases/sharer/sharersStatic/ && git log -1"
+            cmd_chown = "chown -R apache:apache /usr/local/releases/sharer/sharersStatic/"
+            ssh.exec_command(cmd)
+            time.sleep(1)
+            ssh.exec_command(cmd_chown)
+            stdin, stdout, stderr = ssh.exec_command(log)
+            result = stdout.read().decode()
+            print(result)
+        except Exception as e:
+            msg = e
+        return render(request, 'littleantspre.html', locals())
+    
+    
 # 用户注销，退出登录
 def logoutView(request):
     logout(request)
